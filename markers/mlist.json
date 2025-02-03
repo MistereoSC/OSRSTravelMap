@@ -1,0 +1,42 @@
+[
+  {
+    "gid": 1,
+    "gIcon": 1,
+    "gName": "Spirit Tree",
+    "ms": [
+
+      {
+        "uid": 1002,
+        "x": 1408,
+        "y": 686,
+        "st": "Tree Gnome Stronghold"
+      },
+      {
+        "uid": 1003,
+        "x": 2132,
+        "y": 622,
+        "st": "Grand Exchange"
+      },
+      {
+        "uid": 1001,
+        "x": 1488,
+        "y": 966,
+        "st": "Tree Gnome Village"
+      }
+    ]
+  },
+  {
+    "gid": 2,
+    "gIcon": 0,
+    "gName": "Fairy Ring",
+    "ms": [
+      {
+        "uid": 2001,
+        "x": 2058,
+        "y": 984,
+        "st": "A*E*I",
+        "des": "Wizards Tower"
+      }
+    ]
+  }
+]

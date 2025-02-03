@@ -15,7 +15,16 @@ export default {
                 "text-inverse": "rgba(var(--text-inverse))",
                 "text-accent": "rgba(var(--text-accent))",
 
-                "accent-sea": "var(--seacolor)"
+                "accent-sea": "var(--seacolor)",
+                "accent-brown": "var(--a-brown)",
+                "accent-yellow": "var(--a-yellow)",
+                "accent-orange": "var(--a-orange)",
+                "accent-green": "var(--a-green)",
+                "accent-blue": "var(--a-blue)",
+                "accent-cyan": "var(--a-cyan)",
+                "accent-pink": "var(--a-pink)",
+                "accent-purple": "var(--a-purple)",
+                "accent-red": "var(--a-red)"
             }
         },
     },
