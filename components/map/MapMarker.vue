@@ -31,32 +31,36 @@ function hideTooltip() {
 }
 
 function updateTooltipPosition(event: MouseEvent) {
+  const markerRect = (event.target as HTMLElement).getBoundingClientRect();
   tooltipStyle.value = {
-    top: `calc(${event.offsetY}px - 50%)`,
-    left: `${event.offsetX + 18}px`
+    top: `${event.clientY - (markerRect.height/2)}px`,
+    left: `${event.clientX + 18}px`,
   };
 }
 </script>
 
 <template>
-  <div class="MapMarker absolute z-10 cursor-pointer pointer-events-auto"
+  <div class="MapMarker absolute z-10 cursor-pointer pointer-events-auto select-none"
        :class="{ 'hidden': !isVisible }"
        @contextmenu.prevent>
     <div class="MapImage relative w-full h-full bg-cover "
          :style="{backgroundImage: `url('/icons/${props.marker.icon_path}')`}"
          @mouseover="showTooltip" @mouseleave="hideTooltip" @mousemove="updateTooltipPosition"
          @click="onMarkerClick">
-
     </div>
-    <div class="MapHighlight absolute top-0 w-full h-full " :data-highlighted="isHighlighted">></div>
+    <div class="MapHighlight absolute top-0 w-full h-full " :data-highlighted="isHighlighted"></div>
 
 
-    <div v-if="tooltipVisible" class="MapMarkerTooltip z-20 absolute flex flex-col fixed, text-primary bg-primary-200"
-         :style="tooltipStyle">
-      <span class="">{{ props.marker.title }}</span>
-      <span class="text-accent-yellow">{{ props.marker.subtitle }}</span>
-      <span class="text-text-secondary" v-if="props.marker.description">{{ props.marker.description }}</span>
-    </div>
+
+
+    <Teleport to="body">
+      <div v-if="tooltipVisible" class="MapMarkerTooltip fixed flex flex-col text-primary bg-primary-200 border border-accent-yellow whitespace-nowrap z-50 p-1 pointer-events-none"
+           :style="tooltipStyle">
+        <span class="">{{ props.marker.title }}</span>
+        <span class="text-accent-yellow">{{ props.marker.subtitle }}</span>
+        <span class="text-text-secondary" v-if="props.marker.description">{{ props.marker.description }}</span>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -64,10 +68,6 @@ function updateTooltipPosition(event: MouseEvent) {
 .MapMarker {
   width: 32px;
   height: 32px;
-
-  position: absolute;
-  z-index: 1;
-  /* Ensure the marker is above the pseudo-element */
 }
 
 .MapImage {
@@ -114,11 +114,4 @@ function updateTooltipPosition(event: MouseEvent) {
   }
 }
 
-.MapMarkerTooltip {
-  padding: 5px;
-  border-radius: 3px;
-  pointer-events: none;
-  z-index: 1000;
-  white-space: nowrap;
-}
 </style>
