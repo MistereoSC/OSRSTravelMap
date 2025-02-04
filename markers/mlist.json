@@ -1,0 +1,661 @@
+[
+  {
+    "gName": "Spirit Tree",
+    "gid": 1,
+    "gIcon": 1,
+    "ms": [
+      {
+        "uid": 1001,
+        "x": 2132,
+        "y": 622,
+        "st": "Grand Exchange"
+      },
+      {
+        "uid": 1002,
+        "x": 1408,
+        "y": 686,
+        "st": "Tree Gnome Stronghold"
+      },
+      {
+        "uid": 1003,
+        "x": 1488,
+        "y": 966,
+        "st": "Tree Gnome Village"
+      },
+      {
+        "uid": 1004,
+        "x": 1502,
+        "y": 872,
+        "st": "Battlefield of Khazard"
+      },
+      {
+        "uid": 1005,
+        "x": 1434,
+        "y": 1282,
+        "st": "Feldip Hills, Myths Guild"
+      },
+      {
+        "uid": 1006,
+        "x": 1287,
+        "y": 1022,
+        "st": "Poison Waste"
+      },
+      {
+        "uid": 1007,
+        "x": 1200,
+        "y": 766,
+        "st": "Prifiddinas"
+      },
+      {
+        "uid": 1010,
+        "x": 1562,
+        "y": 274,
+        "st": "Etceteria",
+        "des": "Self-grown"
+      },
+      {
+        "uid": 1011,
+        "x": 2009,
+        "y": 874,
+        "st": "Port Sarim",
+        "des": "Self-grown"
+      },
+      {
+        "uid": 1012,
+        "x": 1751,
+        "y": 929,
+        "st": "Brimhaven",
+        "des": "Self-grown"
+      },
+      {
+        "uid": 1013,
+        "x": 641,
+        "y": 590,
+        "st": "Hosidius",
+        "des": "Self-grown"
+      },
+      {
+        "uid": 1014,
+        "x": 202,
+        "y": 382,
+        "st": "Farming Guild",
+        "des": "Self-grown"
+      }
+    ]
+  },
+  {
+    "gName": "Fairy Ring",
+    "gid": 2,
+    "gIcon": 0,
+    "ms": [
+      {
+        "uid": 2001,
+        "x": 1944,
+        "y": 1020,
+        "st": "A*I*Q"
+      },
+      {
+        "uid": 2002,
+        "x": 1648,
+        "y": 883,
+        "st": "A*I*R"
+      },
+      {
+        "uid": 2003,
+        "x": 597,
+        "y": 1121,
+        "st": "A*J*P"
+      },
+      {
+        "uid": 2004,
+        "x": 2160,
+        "y": 916,
+        "st": "A*J*Q",
+        "des": "Dorgesh-Kaan Dungeon"
+      },
+      {
+        "uid": 2005,
+        "x": 1727,
+        "y": 517,
+        "st": "A*J*R"
+      },
+      {
+        "uid": 2006,
+        "x": 1448,
+        "y": 234,
+        "st": "A*J*S"
+      },
+      {
+        "uid": 2007,
+        "x": 2232,
+        "y": 1428,
+        "st": "A*K*P"
+      },
+      {
+        "uid": 2008,
+        "x": 1267,
+        "y": 515,
+        "st": "A*K*Q"
+      },
+      {
+        "uid": 2009,
+        "x": 772,
+        "y": 593,
+        "st": "A*K*R"
+      },
+      {
+        "uid": 2010,
+        "x": 1519,
+        "y": 1174,
+        "st": "A*K*S"
+      },
+      {
+        "uid": 2011,
+        "x": 1451,
+        "y": 494,
+        "st": "A*L*P"
+      },
+      {
+        "uid": 2012,
+        "x": 2547,
+        "y": 636,
+        "st": "A*L*Q"
+      },
+      {
+        "uid": 2014,
+        "x": 1592,
+        "y": 635,
+        "st": "A*L*S"
+      },
+      {
+        "uid": 2015,
+        "x": 2358,
+        "y": 806,
+        "st": "B*I*P"
+      },
+      {
+        "uid": 2016,
+        "x": 2197,
+        "y": 1037,
+        "st": "B*I*Q"
+      },
+      {
+        "uid": 2017,
+        "x": 1584,
+        "y": 864,
+        "st": "B*I*S"
+      },
+      {
+        "uid": 2018,
+        "x": 1213,
+        "y": 1156,
+        "st": "B*J*P"
+      },
+      {
+        "uid": 2020,
+        "x": 1096,
+        "y": 1063,
+        "st": "B*J*S"
+      },
+      {
+        "uid": 2021,
+        "x": 1333,
+        "y": 1095,
+        "st": "B*K*P"
+      },
+      {
+        "uid": 2023,
+        "x": 2417,
+        "y": 699,
+        "st": "B*K*R"
+      },
+      {
+        "uid": 2024,
+        "x": 2151,
+        "y": 963,
+        "st": "B*K*S",
+        "des": "Zanaris"
+      },
+      {
+        "uid": 2025,
+        "x": 1804,
+        "y": 964,
+        "st": "B*L*P",
+        "des": "TzHaar Area"
+      },
+      {
+        "uid": 2027,
+        "x": 1688,
+        "y": 779,
+        "st": "B*L*R"
+      },
+      {
+        "uid": 2028,
+        "x": 242,
+        "y": 637,
+        "st": "B*L*S"
+      },
+      {
+        "uid": 2029,
+        "x": 1460,
+        "y": 246,
+        "st": "C*I*P"
+      },
+      {
+        "uid": 2030,
+        "x": 1476,
+        "y": 1003,
+        "st": "C*I*Q"
+      },
+      {
+        "uid": 2031,
+        "x": 252,
+        "y": 370,
+        "st": "C*I*R"
+      },
+      {
+        "uid": 2032,
+        "x": 585,
+        "y": 263,
+        "st": "C*I*S"
+      },
+      {
+        "uid": 2033,
+        "x": 1653,
+        "y": 554,
+        "st": "C*J*R"
+      },
+      {
+        "uid": 2035,
+        "x": 307,
+        "y": 1189,
+        "st": "C*K*Q"
+      },
+      {
+        "uid": 2036,
+        "x": 1748,
+        "y": 1127,
+        "st": "C*K*R"
+      },
+      {
+        "uid": 2037,
+        "x": 2395,
+        "y": 660,
+        "st": "C*K*S"
+      },
+      {
+        "uid": 2038,
+        "x": 2030,
+        "y": 924,
+        "st": "C*L*P"
+      },
+      {
+        "uid": 2039,
+        "x": 1686,
+        "y": 1393,
+        "st": "C*L*R"
+      },
+      {
+        "uid": 2040,
+        "x": 1630,
+        "y": 1049,
+        "st": "C*L*S"
+      },
+      {
+        "uid": 2044,
+        "x": 2058,
+        "y": 984,
+        "st": "D*I*S"
+      },
+      {
+        "uid": 2045,
+        "x": 1606,
+        "y": 900,
+        "st": "D*J*P"
+      },
+      {
+        "uid": 2046,
+        "x": 401,
+        "y": 473,
+        "st": "D*J*R"
+      },
+      {
+        "uid": 2047,
+        "x": 1848,
+        "y": 1019,
+        "st": "D*K*P"
+      },
+      {
+        "uid": 2048,
+        "x": 2075,
+        "y": 636,
+        "st": "D*K*R"
+      },
+      {
+        "uid": 2049,
+        "x": 1692,
+        "y": 411,
+        "st": "D*K*S"
+      },
+      {
+        "uid": 2050,
+        "x": 2371,
+        "y": 1114,
+        "st": "D*L*Q"
+      },
+      {
+        "uid": 2051,
+        "x": 1161,
+        "y": 1031,
+        "st": "D*L*R"
+      },
+      {
+        "uid": 2052,
+        "x": 2457,
+        "y": 685,
+        "st": "D*L*S",
+        "des": "Myreque Hideout"
+      }
+    ]
+  },
+  {
+    "gName": "Standard Spellbook",
+    "gid": 3,
+    "gIcon": 2,
+    "ms": [
+      {
+        "uid": 3001,
+        "x": 2170,
+        "y": 913,
+        "st": "Lumbridge (Home) Teleport"
+      },
+      {
+        "uid": 3002,
+        "x": 2161,
+        "y": 710,
+        "st": "Varrock Teleport",
+        "des": "Varrock Palace"
+      },
+      {
+        "uid": 3003,
+        "x": 2113,
+        "y": 650,
+        "st": "Varrock Teleport",
+        "des": "Grand Exchange"
+      },
+      {
+        "uid": 3004,
+        "x": 1912,
+        "y": 753,
+        "st": "Falador Teleport"
+      },
+      {
+        "uid": 3005,
+        "x": 1706,
+        "y": 655,
+        "st": "Camelot Teleport",
+        "des": "Camelot Castle"
+      },
+      {
+        "uid": 3006,
+        "x": 1675,
+        "y": 646,
+        "st": "Camelot Teleport",
+        "des": "Seers Village"
+      },
+      {
+        "uid": 3007,
+        "x": 591,
+        "y": 459,
+        "st": "Kourend Castle Teleport"
+      },
+      {
+        "uid": 3008,
+        "x": 1610,
+        "y": 826,
+        "st": "Ardougne Teleport"
+      },
+      {
+        "uid": 3009,
+        "x": 629,
+        "y": 999,
+        "st": "Civitas illa Fortis Teleport"
+      },
+      {
+        "uid": 3010,
+        "x": 1531,
+        "y": 1037,
+        "st": "Watchtower Teleport",
+        "des": "Yanille"
+      },
+      {
+        "uid": 3011,
+        "x": 1494,
+        "y": 1020,
+        "st": "Watchtower Teleport",
+        "des": "Watchtower"
+      },
+      {
+        "uid": 3012,
+        "x": 1839,
+        "y": 456,
+        "st": "Trollheim Teleport"
+      },
+      {
+        "uid": 3013,
+        "x": 1746,
+        "y": 1333,
+        "st": "Ape Atoll Teleport"
+      }
+    ]
+  },
+  {
+    "gName": "Arceuus Spellbook",
+    "gid": 4,
+    "gIcon": 3,
+    "ms": [
+      {
+        "uid": 4001,
+        "x": 648,
+        "y": 253,
+        "st": "Arceuus Home Teleport"
+      },
+      {
+        "uid": 4002,
+        "x": 581,
+        "y": 298,
+        "st": "Arceuus Library Teleport"
+      },
+      {
+        "uid": 4003,
+        "x": 2057,
+        "y": 781,
+        "st": "Draynor Manor Teleport"
+      },
+      {
+        "uid": 4004,
+        "x": 297,
+        "y": 395,
+        "st": "Battlefront Teleport"
+      },
+      {
+        "uid": 4005,
+        "x": 1928,
+        "y": 623,
+        "st": "Mind Altar Teleport"
+      },
+      {
+        "uid": 4006,
+        "x": 2381,
+        "y": 671,
+        "st": "Salve Graveyard Teleport"
+      },
+      {
+        "uid": 4007,
+        "x": 2497,
+        "y": 603,
+        "st": "Fenkenstrains Castle Teleport"
+      },
+      {
+        "uid": 4008,
+        "x": 1448,
+        "y": 843,
+        "st": "West Ardougne Teleport"
+      },
+      {
+        "uid": 4009,
+        "x": 2746,
+        "y": 1266,
+        "st": "Harmony Island Teleport"
+      },
+      {
+        "uid": 4010,
+        "x": 2514,
+        "y": 819,
+        "st": "Barrows Teleport"
+      },
+      {
+        "uid": 4011,
+        "x": 1717,
+        "y": 1430,
+        "st": "Ape Atoll Teleport"
+      },
+      {
+        "uid": 4012,
+        "x": 1929,
+        "y": 369,
+        "st": "Cemetery Teleport"
+      },
+      {
+        "uid": 4013,
+        "x": 1925,
+        "y": 262,
+        "st": "Ghorrock Teleport"
+      }
+    ]
+  },
+  {
+    "gName": "Ancient Spellbook",
+    "gid": 5,
+    "gIcon": 4,
+    "ms": [
+      {
+        "uid": 5001,
+        "x": 2038,
+        "y": 631,
+        "st": "Edgeville Home Teleport"
+      },
+      {
+        "uid": 5002,
+        "x": 2045,
+        "y": 663,
+        "st": "Paddewwa Teleport",
+        "des": "Inside Edgeville Dungeon"
+      },
+      {
+        "uid": 5003,
+        "x": 2268,
+        "y": 794,
+        "st": "Senntisten Teleport"
+      },
+      {
+        "uid": 5004,
+        "x": 2442,
+        "y": 658,
+        "st": "Kharyll Teleport"
+      },
+      {
+        "uid": 5005,
+        "x": 1953,
+        "y": 663,
+        "st": "Lassar Teleport"
+      },
+      {
+        "uid": 5006,
+        "x": 1916,
+        "y": 438,
+        "st": "Dareeyak Teleport"
+      },
+      {
+        "uid": 5007,
+        "x": 2106,
+        "y": 468,
+        "st": "Carrallanger Teleport"
+      },
+      {
+        "uid": 5008,
+        "x": 2236,
+        "y": 247,
+        "st": "Annakari Teleport"
+      },
+      {
+        "uid": 5009,
+        "x": 1923,
+        "y": 261,
+        "st": "Ghorrok Teleport"
+      }
+    ]
+  },
+  {
+    "gName": "Player Homes",
+    "gid": 6,
+    "gIcon": 5,
+    "ms": [
+      {
+        "uid": 6001,
+        "x": 1900,
+        "y": 908,
+        "st": "Rimmington"
+      },
+      {
+        "uid": 6002,
+        "x": 1840,
+        "y": 667,
+        "st": "Taverley"
+      },
+      {
+        "uid": 6003,
+        "x": 2288,
+        "y": 1131,
+        "st": "Pollnivneach"
+      },
+      {
+        "uid": 6004,
+        "x": 689,
+        "y": 615,
+        "st": "Hosidius"
+      },
+      {
+        "uid": 6005,
+        "x": 1618,
+        "y": 502,
+        "st": "Rellekka"
+      },
+      {
+        "uid": 6006,
+        "x": 370,
+        "y": 1169,
+        "st": "Aldarin"
+      },
+      {
+        "uid": 6007,
+        "x": 1704,
+        "y": 954,
+        "st": "Brimhaven"
+      },
+      {
+        "uid": 6008,
+        "x": 1492,
+        "y": 1035,
+        "st": "Yanille"
+      },
+      {
+        "uid": 6009,
+        "x": 1160,
+        "y": 808,
+        "st": "Prifiddinas"
+      }
+    ]
+  }
+]
+
