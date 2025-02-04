@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {IMarker} from "~/markers/Markers";
 
-const isHighlighted = ref(false)
+const store = useMapStateStore()
 const props = defineProps<{
   marker: IMarker
 }>()
@@ -9,6 +9,15 @@ const props = defineProps<{
 function onMarkerClick() {
   console.log('Marker clicked:', props.marker.title, props.marker.subtitle);
 }
+
+const isHighlighted = ref(false)
+const isVisible = ref(true)
+watch(() => store.groupsToggled, (newVal) => {
+  isVisible.value = newVal.includes(props.marker.group_id)
+}, {deep: true})
+watch(() => store.groupHighlighted, (newVal) => {
+  isHighlighted.value = newVal === props.marker.group_id
+})
 
 const tooltipVisible = ref(false);
 const tooltipStyle = ref({top: '0px', left: '0px'});
@@ -30,24 +39,24 @@ function updateTooltipPosition(event: MouseEvent) {
 </script>
 
 <template>
-  <div class="MapMarker absolute cursor-pointer pointer-events-auto"
-
+  <div class="MapMarker absolute z-10 cursor-pointer pointer-events-auto"
+       :class="{ 'hidden': !isVisible }"
        @contextmenu.prevent>
-    <div class="MapImage relative outline-2 outline-green-100 w-full h-full bg-cover "
+    <div class="MapImage relative w-full h-full bg-cover "
          :style="{backgroundImage: `url('/icons/${props.marker.icon_path}')`}"
          @mouseover="showTooltip" @mouseleave="hideTooltip" @mousemove="updateTooltipPosition"
          @click="onMarkerClick">
 
-  </div>
-  <div class="MapHighlight absolute top-0 w-full h-full " :data-highlighted="isHighlighted">></div>
+    </div>
+    <div class="MapHighlight absolute top-0 w-full h-full " :data-highlighted="isHighlighted">></div>
 
 
-  <div v-if="tooltipVisible" class="MapMarkerTooltip absolute flex flex-col fixed, text-primary bg-primary-200"
-       :style="tooltipStyle">
-    <span class="text-center">{{ props.marker.title }}</span>
-    <span class="text-accent-yellow">{{ props.marker.subtitle }}</span>
-    <span class="text-text-secondary" v-if="props.marker.description">{{ props.marker.description }}</span>
-  </div>
+    <div v-if="tooltipVisible" class="MapMarkerTooltip z-20 absolute flex flex-col fixed, text-primary bg-primary-200"
+         :style="tooltipStyle">
+      <span class="">{{ props.marker.title }}</span>
+      <span class="text-accent-yellow">{{ props.marker.subtitle }}</span>
+      <span class="text-text-secondary" v-if="props.marker.description">{{ props.marker.description }}</span>
+    </div>
   </div>
 </template>
 
@@ -62,7 +71,7 @@ function updateTooltipPosition(event: MouseEvent) {
 }
 
 .MapImage {
-  filter: drop-shadow(0 0 4px var(--a-cyan));
+  filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
   z-index: 1;
 }
 
@@ -71,6 +80,7 @@ function updateTooltipPosition(event: MouseEvent) {
 }
 
 .MapHighlight::after {
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
   content: '';
   position: absolute;
   top: -10px;

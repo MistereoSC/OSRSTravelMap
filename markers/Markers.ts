@@ -37,7 +37,11 @@ export interface IMarkerGroup {
 
 export const EIconId = [
     "fairyStaff.png",
-    "spiritTree.webp"
+    "spiritTree.webp",
+    "teleport_standard.webp",
+    "teleport_arceuus.webp",
+    "teleport_ancient.webp",
+    "house.webp"
 ]
 
 import MARKERS from './mlist.json'
@@ -73,3 +77,4 @@ export function createMarkerList() {
 
     return {groups: groupArray, markers: markerArray}
 }
+// Missing Markers: Fairy Rings: ALR, BJR, BKQ, BLQ, CKP, DIP, DIQ, DIR
