@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import {type CSSProperties} from 'vue';
 import type {IMarker} from "~/markers/Markers";
 
 const PIXEL_PER_COORD = 3
+const DRAW_GRID = true
+const GRID_CHUNK_SIZE_PX = 64 * PIXEL_PER_COORD;
+const GRID_OFFSET_PX_X = 37*PIXEL_PER_COORD;
+const GRID_OFFSET_PX_Y = 37*PIXEL_PER_COORD - GRID_CHUNK_SIZE_PX + 1;
+const GRID_COLOR = 'rgba(0, 0, 0, 0.5)';
+const GRID_LINE_WIDTH = 1;
 
 let CMapImage = null as null | HTMLImageElement
 onMounted(() => {
@@ -45,6 +50,7 @@ function drawCanvasImage(setup?: boolean) {
   }
 
   context.drawImage(CMapImage, ImageX.value, ImageY.value, drawWidth, drawHeight);
+  drawGrid()
   updateMarkerPositions();
 }
 
@@ -193,7 +199,7 @@ function getMapCoordinates(mouseX: number, mouseY: number) {
   };
 }
 
-function panButton(direction: "u"|"d"|"l"| "r") {
+function panButton(direction: "u" | "d" | "l" | "r") {
   const panSpeed = 128;
   switch (direction) {
     case "d":
@@ -265,6 +271,62 @@ function getMarkerPosition(marker: IMarker) {
 
 // #endregion
 // ---------------------------------------------
+// #region Grid
+// ---------------------------------------------
+
+watch(() => mapState.gridIsDrawn, (newVal) => {
+  if(newVal == true) drawGrid()
+  else drawCanvasImage()
+});
+function drawGrid() {
+  if(!mapState.gridIsDrawn) return;
+  if (!CMapImage) return;
+  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
+  const context = canvas.getContext('2d');
+  if (!context || !canvas) {
+    console.error("C-ERR::: Could not find worldmap");
+    return;
+  }
+
+  const gridSizePixels = GRID_CHUNK_SIZE_PX * imageScale.value;
+
+  context.strokeStyle = GRID_COLOR;
+  context.lineWidth = GRID_LINE_WIDTH;
+
+  const drawWidth = CMapImage.width * imageScale.value;
+  const drawHeight = CMapImage.height * imageScale.value;
+
+  // Calculate the starting positions with scaled offsets
+  const startX = (ImageX.value + GRID_OFFSET_PX_X * imageScale.value) % gridSizePixels;
+  const endX = 1 + drawWidth + ImageX.value + gridSizePixels - ((drawWidth + ImageX.value - startX) % gridSizePixels);
+
+  const startY = (ImageY.value + GRID_OFFSET_PX_Y * imageScale.value) % gridSizePixels;
+  // const endY = 1 + drawHeight + ImageY.value + gridSizePixels - ((drawHeight + ImageY.value - startY) % gridSizePixels);
+  const endY = 1 + drawHeight + ImageY.value
+
+  // Draw vertical grid lines within the image bounds, including overlapping squares at the edges
+  for (let x = startX; x <= endX; x += gridSizePixels) {
+    if (x >= ImageX.value ) {
+      context.beginPath();
+      context.moveTo(x, ImageY.value + GRID_OFFSET_PX_Y * imageScale.value);
+      context.lineTo(x, endY);
+      context.stroke();
+    }
+  }
+
+  // Draw horizontal grid lines within the image bounds, including overlapping squares at the edges
+  for (let y = startY; y <= endY; y += gridSizePixels) {
+    if (y >= ImageY.value + GRID_OFFSET_PX_Y * imageScale.value) {
+      context.beginPath();
+      context.moveTo(ImageX.value + GRID_OFFSET_PX_X * imageScale.value, y);
+      context.lineTo(endX, y);
+      context.stroke();
+    }
+  }
+}
+
+// #endregion
+// ---------------------------------------------
 
 </script>
 
@@ -282,7 +344,8 @@ function getMarkerPosition(marker: IMarker) {
     ></canvas>
 
     <div id="markerContainer" class="absolute top-0 left-0 w-full h-full pointer-events-none">
-      <MapMarker v-for="marker in markers" :key="`marker-${marker.marker_id}`" :marker="marker" :id="`marker-${marker.marker_id}`"/>
+      <MapMarker v-for="marker in markers" :key="`marker-${marker.marker_id}`" :marker="marker"
+                 :id="`marker-${marker.marker_id}`"/>
     </div>
 
     <div
@@ -297,22 +360,31 @@ function getMarkerPosition(marker: IMarker) {
         id="panControls"
         class="ml-2 h-auto absolute overflow-hidden bottom-14 left-2  font-bold grid grid-cols-3 items-center">
       <div>
-        <button @click="panButton('l')" class="w-6 p-1 rounded-tl-md rounded-bl-md bg-primary-50/50 hover:bg-primary-50/75"><</button>
+        <button @click="panButton('l')"
+                class="w-6 p-1 rounded-tl-md rounded-bl-md bg-primary-50/50 hover:bg-primary-50/75"><
+        </button>
       </div>
-      <div class="grid grid-rows-2 w-6" >
-        <button @click="panButton('u')" class="p-1 rounded-tl-md rounded-tr-md bg-primary-50/50 hover:bg-primary-50/75">^</button>
-        <button @click="panButton('d')" class="p-1 rounded-bl-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">v</button>
+      <div class="grid grid-rows-2 w-6">
+        <button @click="panButton('u')" class="p-1 rounded-tl-md rounded-tr-md bg-primary-50/50 hover:bg-primary-50/75">
+          ^
+        </button>
+        <button @click="panButton('d')" class="p-1 rounded-bl-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">
+          v
+        </button>
       </div>
       <div>
-        <button @click="panButton('r')" class="w-6 p-1 rounded-tr-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">></button>
+        <button @click="panButton('r')"
+                class="w-6 p-1 rounded-tr-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">>
+        </button>
       </div>
     </div>
 
 
-    <div class="debugControls absolute bottom-2 right-2 bg-primary-50/50 grid grid-cols-[1fr,auto,1fr] items-center rounded-md px-2">
-      <span class="text-center w-9 py-2">{{posX}}</span>
+    <div
+        class="debugControls absolute bottom-2 right-2 bg-primary-50/50 grid grid-cols-[1fr,auto,1fr] items-center rounded-md px-2">
+      <span class="text-center w-9 py-2">{{ posX }}</span>
       <div class="h-full w-1 bg-primary-100 mx-2"></div>
-      <span class="text-center w-9 py-2">{{posY}}</span>
+      <span class="text-center w-9 py-2">{{ posY }}</span>
     </div>
   </div>
 </template>

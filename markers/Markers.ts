@@ -36,11 +36,12 @@ export interface IMarkerGroup {
 }
 
 export const EIconId = [
-    "fairyStaff.png",
+    "fairyStaff.webp",
     "spiritTree.webp",
     "teleport_standard.webp",
     "teleport_arceuus.webp",
     "teleport_ancient.webp",
+    "teleport_lunar.webp",
     "house.webp"
 ]
 

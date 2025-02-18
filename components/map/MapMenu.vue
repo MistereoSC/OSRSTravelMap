@@ -36,12 +36,27 @@ function toggleAll() {
         <h1 class="font-bold text-xl text-center m-0 pb-2">OSRS Travel Map</h1>
 
         <div class="w-full flex justify-evenly">
-          <button @click="toggleAll" class="px-2 py-1 bg-primary-100 rounded-md hover:bg-primary-200">Toggle All</button>
+          <button @click="toggleAll" class="px-2 py-1 bg-primary-100 rounded-md hover:bg-primary-200">Toggle All
+          </button>
         </div>
 
         <div class="w-full pt-2">
           <div class="w-full">
             <MapMenuGroup v-for="group in MarkerGroups" :key="group.group_id" :markerGroup="group"/>
+          </div>
+          <div class="w-full mt-8">
+            <h3 class="pl-4">Settings</h3>
+            <div class="MenuItem py-1 flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-100 pl-4"
+                 @click.stop.prevent="() => store.toggleGrid()"
+            >
+
+              <div class="CustomCheckbox w-4 h-4 rounded-md overflow-hidden cursor-pointer"
+                   :class="{ 'checked': store.gridIsDrawn }"></div>
+<!--              <div class="MenuItemImage bg-cover w-6 h-6 @contextmenu.prevent"-->
+<!--                   :style="{backgroundImage: `url('/icons/grid.webp')`}">-->
+<!--              </div>-->
+              <span class="font-bold">Toggle Chunk Grid</span>
+            </div>
           </div>
         </div>
       </div>
@@ -58,5 +73,10 @@ function toggleAll() {
 </template>
 
 <style scoped>
-
+.CustomCheckbox {
+  border: 2px solid var(--a-cyan);
+}
+.CustomCheckbox.checked {
+  background-color: var(--a-cyan);
+}
 </style>
