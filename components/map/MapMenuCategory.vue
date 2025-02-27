@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
   title: string
+  collapsed?: boolean
 }>()
 
-const isExpanded = ref(true)
+const isExpanded = ref(!props.collapsed)
 function toggleExpand() {
   isExpanded.value = !isExpanded.value
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MapMenuGroup from "~/components/map/MapMenuGroup.vue";
 import MapMenuCategory from "~/components/map/MapMenuCategory.vue";
+import ThemeSwitcher from "~/components/ThemeSwitcher.vue";
 
 const store = useMapStateStore()
 const MarkerGroups = ref(store.getMarkerGroups())
@@ -78,7 +79,7 @@ function toggleAll() {
           </div>
 
 <!--          <div class="mt-32 mb-2 w-full h-[1px] bg-primary-200"></div>-->
-          <MapMenuCategory title="Settings">
+          <MapMenuCategory title="Settings" :collapsed="true">
             <div class="MenuItem py-1 flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-100 pl-4"
                  @click.stop.prevent="() => store.toggleGrid()"
             >
@@ -101,6 +102,11 @@ function toggleAll() {
               <div class="CustomCheckbox w-4 h-4 rounded-md overflow-hidden cursor-pointer"
                    :class="{ 'checked': store.showCoordinates }"></div>
               <span class="font-bold">Show Coordinates</span>
+            </div>
+
+            <div class="w-full flex items-start gap-4 pl-4">
+              <span class="text-xl">Theme</span>
+              <ThemeSwitcher />
             </div>
           </MapMenuCategory>
 
