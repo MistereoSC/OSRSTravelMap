@@ -2,15 +2,18 @@ import {defineStore} from 'pinia'
 import type {IMarkerGroup, IMarker} from "~/markers/Markers";
 import {createMarkerList} from "~/markers/Markers";
 
-const DEFAULT_TOGGLE_ARRAY = [1, 2, 3, 4, 5, 6, 7]
+const DEFAULT_TOGGLE_ARRAY = [1, 2, 3, 4, 5, 6, 7, 8]
 
 export const useMapStateStore = defineStore('mapState', () => {
     const MENU_WIDTH = 312
 
     const menuExpanded = ref(true)
-    const gridIsDrawn = ref(true)
     const groupsToggled = ref(DEFAULT_TOGGLE_ARRAY)
     const groupHighlighted = ref(null as null | number)
+
+    const gridIsDrawn = ref(true)
+    const showControls = ref(false)
+    const showCoordinates = ref(false)
 
     function toggleMenu(to?: boolean) {
         if (to != undefined) menuExpanded.value = to
@@ -54,6 +57,14 @@ export const useMapStateStore = defineStore('mapState', () => {
         gridIsDrawn.value = !gridIsDrawn.value
         return gridIsDrawn.value
     }
+function toggleControls() {
+        showControls.value = !showControls.value
+        return showControls.value
+    }
+    function toggleCoordinates() {
+        showCoordinates.value = !showCoordinates.value
+        return showCoordinates.value
+    }
 
     return {
         MENU_WIDTH,
@@ -67,7 +78,11 @@ export const useMapStateStore = defineStore('mapState', () => {
         highlightGroup,
         toggleAlLGroups,
         gridIsDrawn,
-        toggleGrid
+        toggleGrid,
+        showControls,
+        showCoordinates,
+        toggleCoordinates,
+        toggleControls
     }
 })
 

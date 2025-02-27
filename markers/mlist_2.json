@@ -1,0 +1,90 @@
+[
+  {
+    "gName": "Quetzal",
+    "gid": 8,
+    "gIcon": 8,
+    "hCol": 0,
+    "ms": [
+      {
+        "uid": 8001,
+        "x": 2228,
+        "y": 718,
+        "st": "Varrock",
+        "lms": [8003]
+      },
+      {
+        "uid": 8002,
+        "x": 337,
+        "y": 1233,
+        "st": "Aldarin"
+      },
+      {
+        "uid": 8003,
+        "x": 648,
+        "y": 990,
+        "st": "Civitas illa Fortis",
+        "lms": [8001]
+      },
+      {
+        "uid": 8004,
+        "x": 533,
+        "y": 1077,
+        "st": "Hunter Guild"
+      },
+      {
+        "uid": 8005,
+        "x": 460,
+        "y": 910,
+        "st": "Quetzacalli Gorge"
+      },
+      {
+        "uid": 8006,
+        "x": 496,
+        "y": 1135,
+        "st": "Sunset Coast"
+      },
+      {
+        "uid": 8007,
+        "x": 385,
+        "y": 963,
+        "st": "The Teomat"
+      },
+      {
+        "uid": 8008,
+        "x": 725,
+        "y": 1020,
+        "st": "Fortis Colosseum",
+        "des": "Requires Building"
+      },
+      {
+        "uid": 8009,
+        "x": 650,
+        "y": 1095,
+        "st": "Outer Fortis",
+        "des": "Requires Building"
+      },
+      {
+        "uid": 8010,
+        "x": 620,
+        "y": 1199,
+        "st": "Colossal Wyrm Remains",
+        "des": "Requires Building"
+      },
+      {
+        "uid": 8011,
+        "x": 396,
+        "y": 1024,
+        "st": "Cam Torum",
+        "des": "Requires Building"
+      },
+      {
+        "uid": 8012,
+        "x": 561,
+        "y": 830,
+        "st": "Salvager Overlook",
+        "des": "Requires Building"
+      }
+    ]
+  }
+]
+

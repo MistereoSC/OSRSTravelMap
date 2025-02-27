@@ -10,7 +10,6 @@ export interface IMarkerRaw {
     x: number,
     y: number,
     uid: number, // Unique ID
-    gid: number, // Group ID,
     lms?: number[], // Linked Markers UID
     st: string, // Subtitle
     des?: string, // Description
@@ -35,6 +34,7 @@ export interface IMarkerGroup {
     name: string,
     icon_path: string,
     markers: number[],
+    highlight_color?: string,
 }
 
 export const EIconId = [
@@ -45,7 +45,8 @@ export const EIconId = [
     "teleport_ancient.webp",        //4
     "teleport_lunar.webp",          //5
     "house.webp",                   //6
-    "sailing.webp"                  //7
+    "sailing.webp",                 //7
+    "quetzal.webp",                 //8
 ]
 export const EIconHighlightColor = [
     "rgba(208, 193, 0, 255)",       //0
@@ -60,9 +61,10 @@ export const EIconHighlightColor = [
 ]
 
 import MARKERS from './mlist.json'
+import MARKERS_2 from './mlist_2.json'
 export function createMarkerList() {
     // @ts-ignore
-    const markerListRaw = [...MARKERS] as IMarkerGroupRaw[]
+    const markerListRaw = [...MARKERS, ...MARKERS_2] as IMarkerGroupRaw[]
     const markerArray = [] as IMarker[]
     const groupArray = [] as IMarkerGroup[]
 
@@ -72,6 +74,7 @@ export function createMarkerList() {
             group_id: group.gid,
             name: group.gName,
             icon_path: EIconId[group.gIcon],
+            highlight_color: group.hCol != undefined ? EIconHighlightColor[group.hCol] : undefined,
             markers: []
         }
         for (const marker of markers) {

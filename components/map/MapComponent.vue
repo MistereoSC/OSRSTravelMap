@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import type {IMarker} from "~/markers/Markers";
-import {start} from "node:repl";
 
 const PIXEL_PER_COORD = 3
-const DRAW_GRID = true
 const GRID_CHUNK_SIZE_PX = 64 * PIXEL_PER_COORD;
 const GRID_OFFSET_PX_X = 37 * PIXEL_PER_COORD;
 const GRID_OFFSET_PX_Y = 37 * PIXEL_PER_COORD - GRID_CHUNK_SIZE_PX + 1;
@@ -229,6 +227,11 @@ const mapState = useMapStateStore()
 watch(() => mapState.menuExpanded, (val) => {
   setControlsToMenuExpanded(val)
 });
+watch(() => mapState.showControls, (val) => {
+  nextTick(() => {
+    setControlsToMenuExpanded(mapState.menuExpanded)
+  })
+});
 
 function setControlsToMenuExpanded(isExpanded?: boolean) {
   const elZoom = document.getElementById('zoomControls')
@@ -420,39 +423,51 @@ function clearLeaderLine() {
     </div>
 
     <div
+        v-if="mapState.showControls"
         id="zoomControls"
         class="h-auto absolute overflow-hidden bottom-2 left-2 ml-2 font-bold bg-primary-50/50 grid grid-cols-3 rounded-md items-center">
-      <button class="p-2 hover:bg-primary-50/25 w-6" @click="() => zoomIn()">+</button>
+      <button class="p-2 grid place-content-center hover:bg-primary-50/25 w-6" @click="() => zoomIn()">
+        <Icon name="tabler:plus"/>
+      </button>
       <span class="text-center select-none w-6"> {{ zoomLevel }}</span>
-      <button class="p-2 hover:bg-primary-50/25 w-6" @click="() => zoomOut()">-</button>
+      <button class="p-2 grid place-content-center hover:bg-primary-50/25 w-6" @click="() => zoomOut()">
+        <Icon name="tabler:minus"/>
+      </button>
     </div>
 
     <div
+        v-if="mapState.showControls"
         id="panControls"
         class="ml-2 h-auto absolute overflow-hidden bottom-14 left-2  font-bold grid grid-cols-3 items-center">
       <div>
         <button @click="panButton('l')"
-                class="w-6 p-1 rounded-tl-md rounded-bl-md bg-primary-50/50 hover:bg-primary-50/75"><
+                class="w-6 p-1 rounded-tl-md rounded-bl-md bg-primary-50/50 hover:bg-primary-50/75"
+        >
+          <Icon name="tabler:arrow-big-left-filled"/>
         </button>
       </div>
       <div class="grid grid-rows-2 w-6">
         <button @click="panButton('u')" class="p-1 rounded-tl-md rounded-tr-md bg-primary-50/50 hover:bg-primary-50/75">
-          ^
+          <Icon name="tabler:arrow-big-up-filled"/>
         </button>
         <button @click="panButton('d')" class="p-1 rounded-bl-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">
-          v
+          <Icon name="tabler:arrow-big-down-filled"/>
         </button>
       </div>
       <div>
         <button @click="panButton('r')"
-                class="w-6 p-1 rounded-tr-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75">>
+                class="w-6 p-1 rounded-tr-md rounded-br-md bg-primary-50/50 hover:bg-primary-50/75"
+        >
+          <Icon name="tabler:arrow-big-right-filled"/>
         </button>
       </div>
     </div>
 
 
     <div
-        class="debugControls absolute bottom-2 right-2 bg-primary-50/50 grid grid-cols-[1fr,auto,1fr] items-center rounded-md px-2">
+        v-if="mapState.showCoordinates"
+        class="debugControls absolute bottom-2 right-2 bg-primary-50/50 grid grid-cols-[1fr,auto,1fr] items-center rounded-md px-2"
+    >
       <span class="text-center w-9 py-2">{{ posX }}</span>
       <div class="h-full w-1 bg-primary-100 mx-2"></div>
       <span class="text-center w-9 py-2">{{ posY }}</span>

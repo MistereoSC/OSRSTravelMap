@@ -85,7 +85,6 @@ function getHighlightColorString() {
 }
 
 .MapImage {
-  //filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
   z-index: 1;
 }
 
