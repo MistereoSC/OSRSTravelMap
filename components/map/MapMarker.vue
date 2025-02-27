@@ -18,7 +18,7 @@ function onMarkerClick() {
 const isHighlighted = ref(false)
 const isVisible = ref(true)
 watch(() => store.groupsToggled, (newVal) => {
-  isVisible.value = newVal.includes(props.marker.group_id)
+  (isVisible.value = newVal.includes(props.marker.group_id))
 }, {deep: true})
 watch(() => store.groupHighlighted, (newVal) => {
   isHighlighted.value = newVal === props.marker.group_id

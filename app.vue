@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-const store = usePageStateStore()
+const pageStateStore = usePageStateStore()
 onBeforeMount(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
-    store.getTheme()
+    pageStateStore.getTheme()
   }
 })
 </script>

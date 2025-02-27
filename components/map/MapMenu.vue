@@ -5,6 +5,10 @@ import MapMenuCategory from "~/components/map/MapMenuCategory.vue";
 const store = useMapStateStore()
 const MarkerGroups = ref(store.getMarkerGroups())
 
+onMounted(() => {
+  store.loadStorage()
+})
+
 function handleMouseEnter(group_id: number) {
   store.highlightGroup(group_id)
 }
