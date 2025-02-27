@@ -10,7 +10,9 @@
         "x": 2228,
         "y": 718,
         "st": "Varrock",
-        "lms": [8003]
+        "lms": [
+          8003
+        ]
       },
       {
         "uid": 8002,
@@ -23,7 +25,9 @@
         "x": 648,
         "y": 990,
         "st": "Civitas illa Fortis",
-        "lms": [8001]
+        "lms": [
+          8001
+        ]
       },
       {
         "uid": 8004,
@@ -83,6 +87,70 @@
         "y": 830,
         "st": "Salvager Overlook",
         "des": "Requires Building"
+      }
+    ]
+  },
+  {
+    "gName": "Magic Carpets",
+    "gid": 9,
+    "gIcon": 19,
+    "hCol": 0,
+    "ms": [
+      {
+        "uid": 9001,
+        "x": 2260,
+        "y": 1025,
+        "st": "Shantay Pass",
+        "lms": [9002, 9003, 9004]
+      },
+      {
+        "uid": 9002,
+        "x": 2300,
+        "y": 1130,
+        "st": "Pollnivneach",
+        "lms": [9001]
+      },
+      {
+        "uid": 9003,
+        "x": 2132,
+        "y": 1090,
+        "st": "Bedabin Camp",
+        "lms": [9001]
+      },
+      {
+        "uid": 9004,
+        "x": 2417,
+        "y": 1021,
+        "st": "Uzer",
+        "lms": [9001]
+      },
+      {
+        "uid": 9005,
+        "x": 2294,
+        "y": 1189,
+        "st": "Pollnivneach",
+        "lms": [9006, 9007, 9008]
+      },
+      {
+        "uid": 9006,
+        "x": 2348,
+        "y": 1216,
+        "st": "Nardah",
+        "lms": [9005]
+      },
+      {
+        "uid": 9007,
+        "x": 2236,
+        "y": 1318,
+        "st": "Sophanem",
+        "lms": [9005]
+      },
+      {
+        "uid": 9008,
+        "x": 2193,
+        "y": 1320,
+        "st": "Menaphos",
+        "lms": [9005]
       }
     ]
   }

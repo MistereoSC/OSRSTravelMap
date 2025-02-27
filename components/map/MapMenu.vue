@@ -57,9 +57,9 @@ function toggleAll() {
             <MapMenuCategory title="Others">
               <MapMenuGroup :marker-group="MarkerGroups[6]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[7]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[8]" :inset="1"></MapMenuGroup>
             </MapMenuCategory>
             <MapMenuCategory title="Accessories">
-              <MapMenuGroup :marker-group="MarkerGroups[8]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[9]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[10]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[11]" :inset="1"></MapMenuGroup>
@@ -69,10 +69,11 @@ function toggleAll() {
               <MapMenuGroup :marker-group="MarkerGroups[15]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[16]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[17]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[18]" :inset="1"></MapMenuGroup>
             </MapMenuCategory>
           </div>
 
-          <div class="mt-32 mb-2 w-full h-[1px] bg-primary-200"></div>
+<!--          <div class="mt-32 mb-2 w-full h-[1px] bg-primary-200"></div>-->
           <MapMenuCategory title="Settings">
             <div class="MenuItem py-1 flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-100 pl-4"
                  @click.stop.prevent="() => store.toggleGrid()"

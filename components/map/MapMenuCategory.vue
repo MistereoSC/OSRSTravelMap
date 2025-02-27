@@ -26,15 +26,5 @@ function toggleExpand() {
 </template>
 
 <style scoped>
-.CustomCheckbox {
-  border: 2px solid var(--a-cyan);
-}
 
-.CustomCheckbox.checked {
-  background-color: var(--a-cyan);
-}
-
-.MenuItemImage {
-  filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
-}
 </style>

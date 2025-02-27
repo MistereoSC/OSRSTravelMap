@@ -57,6 +57,7 @@ export const EIconId = [
     "acc_dueling.webp",             //16
     "acc_wealth.webp",              //17
     "acc_slayer.webp",              //18
+    "shantay.webp",                 //19
 ]
 export const EIconHighlightColor = [
     "rgba(208, 193, 0, 255)",       //0

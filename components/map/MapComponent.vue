@@ -7,7 +7,7 @@ const GRID_OFFSET_PX_X = 37 * PIXEL_PER_COORD;
 const GRID_OFFSET_PX_Y = 37 * PIXEL_PER_COORD - GRID_CHUNK_SIZE_PX + 1;
 const GRID_COLOR = 'rgba(0, 0, 0, 0.5)';
 const GRID_LINE_WIDTH = 1;
-const LEADER_LINE_COLOR = 'rgba(208, 193, 0, 255)';
+const LEADER_LINE_COLOR = 'rgba(214,2,112,255)';
 const LEADER_LINE_WIDTH = 4;
 
 let CMapImage = null as null | HTMLImageElement
@@ -227,7 +227,7 @@ const mapState = useMapStateStore()
 watch(() => mapState.menuExpanded, (val) => {
   setControlsToMenuExpanded(val)
 });
-watch(() => mapState.showControls, (val) => {
+watch(() => mapState.showControls, () => {
   nextTick(() => {
     setControlsToMenuExpanded(mapState.menuExpanded)
   })
@@ -381,11 +381,9 @@ function drawLeaderLines(data: IMakerLineData | null) {
 
     // Calculate control points for the bezier curve
     const controlX1 = startX + (targetX - startX) / 2;
-    const controlY1 = startY;
     const controlX2 = startX + (targetX - startX) / 2;
-    const controlY2 = targetY;
 
-    _CONTEXT.bezierCurveTo(controlX1, controlY1, controlX2, controlY2, targetX, targetY);
+    _CONTEXT.bezierCurveTo(controlX1, startY, controlX2, targetY, targetX, targetY);
     _CONTEXT.strokeStyle = LEADER_LINE_COLOR;
     _CONTEXT.lineWidth = LEADER_LINE_WIDTH;
     _CONTEXT.stroke();
