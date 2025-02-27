@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import type {IMarker} from "~/markers/Markers";
+import {start} from "node:repl";
 
 const PIXEL_PER_COORD = 3
 const DRAW_GRID = true
 const GRID_CHUNK_SIZE_PX = 64 * PIXEL_PER_COORD;
-const GRID_OFFSET_PX_X = 37*PIXEL_PER_COORD;
-const GRID_OFFSET_PX_Y = 37*PIXEL_PER_COORD - GRID_CHUNK_SIZE_PX + 1;
+const GRID_OFFSET_PX_X = 37 * PIXEL_PER_COORD;
+const GRID_OFFSET_PX_Y = 37 * PIXEL_PER_COORD - GRID_CHUNK_SIZE_PX + 1;
 const GRID_COLOR = 'rgba(0, 0, 0, 0.5)';
 const GRID_LINE_WIDTH = 1;
+const LEADER_LINE_COLOR = 'rgba(208, 193, 0, 255)';
+const LEADER_LINE_WIDTH = 4;
 
 let CMapImage = null as null | HTMLImageElement
 onMounted(() => {
   setControlsToMenuExpanded(mapState.menuExpanded)
+  _CANVAS = document.getElementById('worldmap') as HTMLCanvasElement;
+  _CONTEXT = _CANVAS.getContext('2d') as CanvasRenderingContext2D;
+  if (!_CANVAS || !_CONTEXT) {
+    console.error("C-ERR::: Could not find worldmap");
+    return;
+  }
   CMapImage = new Image();
   CMapImage.src = '/images/worldmap.png';
   CMapImage.onload = () => {
@@ -28,37 +37,34 @@ onUnmounted(() => {
 // ---------------------------------------------
 const ImageX = ref(0)
 const ImageY = ref(0)
+let _CANVAS = {} as HTMLCanvasElement
+let _CONTEXT = {} as CanvasRenderingContext2D
 
 function drawCanvasImage(setup?: boolean) {
   if (!CMapImage) return
-  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
-  const context = canvas.getContext('2d');
-  if (!context || !canvas) {
-    console.error("C-ERR::: Could not find worldmap");
-    return;
-  }
 
-  canvas.width = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
+  _CANVAS.width = _CANVAS.clientWidth;
+  _CANVAS.height = _CANVAS.clientHeight;
 
   const drawWidth = CMapImage.width * imageScale.value;
   const drawHeight = CMapImage.height * imageScale.value;
 
   if (setup == true) {
-    ImageX.value = (canvas.width - drawWidth) / 2;
-    ImageY.value = (canvas.height - drawHeight) / 2;
+    ImageX.value = (_CANVAS.width - drawWidth) / 2;
+    ImageY.value = (_CANVAS.height - drawHeight) / 2;
   }
 
-  context.drawImage(CMapImage, ImageX.value, ImageY.value, drawWidth, drawHeight);
+  _CONTEXT.drawImage(CMapImage, ImageX.value, ImageY.value, drawWidth, drawHeight);
   drawGrid()
   updateMarkerPositions();
+  // drawLeaderLines(activeMapMarkerLineData.value)
 }
 
 // #endregion
 // ---------------------------------------------
 // #region Zoom
 // ---------------------------------------------
-const AbsZoomLevels = [0.285, 0.33, 0.4, 0.5, 0.66, 1, 1.5, 2, 2.5, 3]
+const AbsZoomLevels = [0.2, 0.285, 0.33, 0.4, 0.5, 0.66, 1, 1.5, 2, 2.5]
 const zoomLevel = ref(4)
 const imageScale = ref(AbsZoomLevels[4])
 
@@ -86,9 +92,8 @@ function zoomOut(ev?: MouseEvent) {
 }
 
 function adjustImagePositionRelativeToMouse(oldScale: number, newScale: number, ev: MouseEvent | undefined,) {
-  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
-  if (!canvas || !CMapImage) return;
-  const rect = canvas.getBoundingClientRect();
+  if (!CMapImage) return;
+  const rect = _CANVAS.getBoundingClientRect();
 
   let panX = ev ? ev.clientX - rect.left : rect.width / 2;
   let panY = ev ? ev.clientY - rect.top : rect.height / 2;
@@ -104,10 +109,10 @@ function adjustImagePositionRelativeToMouse(oldScale: number, newScale: number, 
   ImageX.value -= offsetX;
   ImageY.value -= offsetY;
 
-  const CMaxPanX = (canvas.width - CMapImage.width * imageScale.value) - canvas.width / 4
-  const CMaxPanY = (canvas.height - CMapImage.height * imageScale.value) - canvas.height / 4
-  const CMinPanX = canvas.width / 4
-  const CMinPanY = canvas.height / 4
+  const CMaxPanX = (_CANVAS.width - CMapImage.width * imageScale.value) - _CANVAS.width / 4
+  const CMaxPanY = (_CANVAS.height - CMapImage.height * imageScale.value) - _CANVAS.height / 4
+  const CMinPanX = _CANVAS.width / 4
+  const CMinPanY = _CANVAS.height / 4
   ImageX.value = Math.max(Math.min(ImageX.value, CMinPanX), CMaxPanX);
   ImageY.value = Math.max(Math.min(ImageY.value, CMinPanY), CMaxPanY);
 }
@@ -124,7 +129,7 @@ const posY = ref(0)
 const lastMouseX = ref(0)
 const lastMouseY = ref(0)
 
-const targetFPS = 60;
+const targetFPS = 30;
 const frameDuration = 1000 / targetFPS;
 let lastFrameTime = 0;
 let _isOnPanDelay = false
@@ -166,13 +171,12 @@ function lMouseButton(ev: MouseEvent) {
 // ---------------------------------------------
 
 function panImg(x: number, y: number) {
-  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
-  if (!canvas || !CMapImage) return
+  if (!CMapImage) return
 
-  const CMaxPanX = (canvas.width - CMapImage.width * imageScale.value) - canvas.width / 4
-  const CMaxPanY = (canvas.height - CMapImage.height * imageScale.value) - canvas.height / 4
-  const CMinPanX = canvas.width / 4
-  const CMinPanY = canvas.height / 4
+  const CMaxPanX = (_CANVAS.width - CMapImage.width * imageScale.value) - _CANVAS.width / 4
+  const CMaxPanY = (_CANVAS.height - CMapImage.height * imageScale.value) - _CANVAS.height / 4
+  const CMinPanX = _CANVAS.width / 4
+  const CMinPanY = _CANVAS.height / 4
   ImageX.value = Math.min(Math.max(ImageX.value + x, CMaxPanX), CMinPanX);
   ImageY.value = Math.min(Math.max(ImageY.value + y, CMaxPanY), CMinPanY);
 
@@ -180,10 +184,9 @@ function panImg(x: number, y: number) {
 }
 
 function getMapCoordinates(mouseX: number, mouseY: number) {
-  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
-  if (!canvas || !CMapImage) return {x: 0, y: 0};
+  if (!CMapImage) return {x: 0, y: 0};
 
-  const rect = canvas.getBoundingClientRect();
+  const rect = _CANVAS.getBoundingClientRect();
   const canvasX = mouseX - rect.left;
   const canvasY = mouseY - rect.top;
 
@@ -275,23 +278,18 @@ function getMarkerPosition(marker: IMarker) {
 // ---------------------------------------------
 
 watch(() => mapState.gridIsDrawn, (newVal) => {
-  if(newVal == true) drawGrid()
+  if (newVal == true) drawGrid()
   else drawCanvasImage()
 });
+
 function drawGrid() {
-  if(!mapState.gridIsDrawn) return;
+  if (!mapState.gridIsDrawn) return;
   if (!CMapImage) return;
-  const canvas = document.getElementById('worldmap') as HTMLCanvasElement;
-  const context = canvas.getContext('2d');
-  if (!context || !canvas) {
-    console.error("C-ERR::: Could not find worldmap");
-    return;
-  }
 
   const gridSizePixels = GRID_CHUNK_SIZE_PX * imageScale.value;
 
-  context.strokeStyle = GRID_COLOR;
-  context.lineWidth = GRID_LINE_WIDTH;
+  _CONTEXT.strokeStyle = GRID_COLOR;
+  _CONTEXT.lineWidth = GRID_LINE_WIDTH;
 
   const drawWidth = CMapImage.width * imageScale.value;
   const drawHeight = CMapImage.height * imageScale.value;
@@ -306,28 +304,98 @@ function drawGrid() {
 
   // Draw vertical grid lines within the image bounds, including overlapping squares at the edges
   for (let x = startX; x <= endX; x += gridSizePixels) {
-    if (x >= ImageX.value ) {
-      context.beginPath();
-      context.moveTo(x, ImageY.value + GRID_OFFSET_PX_Y * imageScale.value);
-      context.lineTo(x, endY);
-      context.stroke();
+    if (x >= ImageX.value) {
+      _CONTEXT.beginPath();
+      _CONTEXT.moveTo(x, ImageY.value + GRID_OFFSET_PX_Y * imageScale.value);
+      _CONTEXT.lineTo(x, endY);
+      _CONTEXT.stroke();
     }
   }
 
   // Draw horizontal grid lines within the image bounds, including overlapping squares at the edges
   for (let y = startY; y <= endY; y += gridSizePixels) {
     if (y >= ImageY.value + GRID_OFFSET_PX_Y * imageScale.value) {
-      context.beginPath();
-      context.moveTo(ImageX.value + GRID_OFFSET_PX_X * imageScale.value, y);
-      context.lineTo(endX, y);
-      context.stroke();
+      _CONTEXT.beginPath();
+      _CONTEXT.moveTo(ImageX.value + GRID_OFFSET_PX_X * imageScale.value, y);
+      _CONTEXT.lineTo(endX, y);
+      _CONTEXT.stroke();
     }
   }
 }
 
 // #endregion
 // ---------------------------------------------
+// #region Leader Lines
+// ---------------------------------------------
+interface IMakerLineData {
+  from_id: number,
+  to_ids: number[],
+  start_element: HTMLElement,
+  target_elements: HTMLElement[]
+}
 
+const activeMapMarkerLineData = ref(null as null | IMakerLineData)
+
+function toggleLeaderLine(marker: IMarker) {
+  const from_id = marker.marker_id
+  const to_ids = marker.linked_markers
+
+  if (!to_ids || to_ids.length == 0) {
+    if (activeMapMarkerLineData.value !== null) clearLeaderLine()
+    return
+  }
+
+  if (activeMapMarkerLineData.value?.from_id == from_id) {
+    clearLeaderLine()
+    return
+  }
+
+  const start_element = document.getElementById(`marker-${from_id}`);
+  const target_elements = to_ids.map(id => document.getElementById(`marker-${id}`) as HTMLElement)
+  if (start_element == null || target_elements.some(el => el == null)) return
+  activeMapMarkerLineData.value = {
+    from_id,
+    to_ids,
+    start_element,
+    target_elements,
+  }
+  drawLeaderLines(activeMapMarkerLineData.value)
+}
+
+function drawLeaderLines(data: IMakerLineData | null) {
+  if(!data) return
+  const startRect = data.start_element.getBoundingClientRect();
+  const startX = startRect.left + startRect.width / 2;
+  const startY = startRect.top + startRect.height / 2;
+
+  for (const target of data.target_elements) {
+    const targetRect = target.getBoundingClientRect();
+    const targetX = targetRect.left + targetRect.width / 2;
+    const targetY = targetRect.top + targetRect.height / 2;
+
+    _CONTEXT.beginPath();
+    _CONTEXT.moveTo(startX, startY);
+
+    // Calculate control points for the bezier curve
+    const controlX1 = startX + (targetX - startX) / 2;
+    const controlY1 = startY;
+    const controlX2 = startX + (targetX - startX) / 2;
+    const controlY2 = targetY;
+
+    _CONTEXT.bezierCurveTo(controlX1, controlY1, controlX2, controlY2, targetX, targetY);
+    _CONTEXT.strokeStyle = LEADER_LINE_COLOR;
+    _CONTEXT.lineWidth = LEADER_LINE_WIDTH;
+    _CONTEXT.stroke();
+  }
+}
+
+function clearLeaderLine() {
+  activeMapMarkerLineData.value = null
+  drawCanvasImage()
+}
+
+// #endregion
+// ---------------------------------------------
 </script>
 
 <template>
@@ -345,7 +413,10 @@ function drawGrid() {
 
     <div id="markerContainer" class="absolute top-0 left-0 w-full h-full pointer-events-none">
       <MapMarker v-for="marker in markers" :key="`marker-${marker.marker_id}`" :marker="marker"
-                 :id="`marker-${marker.marker_id}`"/>
+                 :id="`marker-${marker.marker_id}`"
+                 @hover="() => toggleLeaderLine(marker)"
+                 @leave="() => clearLeaderLine()"
+      />
     </div>
 
     <div

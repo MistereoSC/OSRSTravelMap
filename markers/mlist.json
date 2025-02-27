@@ -1,8 +1,9 @@
 [
   {
-    "gName": "Spirit Tree",
+    "gName": "Spirit Trees",
     "gid": 1,
     "gIcon": 1,
+    "hCol": 0,
     "ms": [
       {
         "uid": 1001,
@@ -84,7 +85,7 @@
     ]
   },
   {
-    "gName": "Fairy Ring",
+    "gName": "Fairy Rings",
     "gid": 2,
     "gIcon": 0,
     "ms": [

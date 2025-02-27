@@ -5,9 +5,14 @@ const store = useMapStateStore()
 const props = defineProps<{
   marker: IMarker
 }>()
+const emit = defineEmits<{
+  (e: 'click'): void;
+  (e: 'hover'): void;
+  (e: 'leave'): void;
+}>();
 
 function onMarkerClick() {
-  console.log('Marker clicked:', props.marker.title, props.marker.subtitle);
+  emit('click')
 }
 
 const isHighlighted = ref(false)
@@ -24,10 +29,12 @@ const tooltipStyle = ref({top: '0px', left: '0px'});
 
 function showTooltip() {
   tooltipVisible.value = true;
+  emit('hover')
 }
 
 function hideTooltip() {
   tooltipVisible.value = false;
+  emit('leave')
 }
 
 function updateTooltipPosition(event: MouseEvent) {

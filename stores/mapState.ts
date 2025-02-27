@@ -8,7 +8,7 @@ export const useMapStateStore = defineStore('mapState', () => {
     const MENU_WIDTH = 312
 
     const menuExpanded = ref(true)
-    const gridIsDrawn = ref(false)
+    const gridIsDrawn = ref(true)
     const groupsToggled = ref(DEFAULT_TOGGLE_ARRAY)
     const groupHighlighted = ref(null as null | number)
 

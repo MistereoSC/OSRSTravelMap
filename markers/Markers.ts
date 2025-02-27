@@ -13,6 +13,7 @@ export interface IMarkerRaw {
     lms?: number[], // Linked Markers UID
     st: string, // Subtitle
     des?: string, // Description
+    hCol?: number, // Highlight Color
 }
 
 export interface IMarker {
@@ -42,13 +43,17 @@ export const EIconId = [
     "teleport_arceuus.webp",
     "teleport_ancient.webp",
     "teleport_lunar.webp",
-    "house.webp"
+    "house.webp",
+    "sailing.webp"
+]
+export const EIconHighlightColor = [
+
 ]
 
 import MARKERS from './mlist.json'
 export function createMarkerList() {
     // @ts-ignore
-    const markerListRaw = MARKERS as IMarkerGroupRaw[]
+    const markerListRaw = [...MARKERS] as IMarkerGroupRaw[]
     const markerArray = [] as IMarker[]
     const groupArray = [] as IMarkerGroup[]
 

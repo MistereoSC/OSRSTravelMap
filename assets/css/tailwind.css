@@ -47,7 +47,6 @@ body {
 
 :root {
     --seacolor: rgba(90, 109, 151);
-    --a-brown: rgba(97, 57, 21, 255);
     --a-yellow: rgba(208, 193, 0, 255);
     --a-orange: rgba(239,118,39,255);
     --a-green: rgba(74, 129, 35, 255);
@@ -56,6 +55,7 @@ body {
     --a-pink: rgba(214,2,112,255);
     --a-purple: rgba(163,2,98,255);
     --a-red: rgba(148, 2, 2, 255);
+    --a-brown: rgba(97, 57, 21, 255);
 }
 ::-webkit-scrollbar {
     width: 8px;
