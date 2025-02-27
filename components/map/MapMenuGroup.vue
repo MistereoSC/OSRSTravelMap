@@ -64,6 +64,11 @@ function getHighlightColorString() {
 }
 
 .MenuItemImage {
-  filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  object-fit: contain;
 }
 </style>

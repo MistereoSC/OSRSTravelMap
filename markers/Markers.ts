@@ -47,6 +47,16 @@ export const EIconId = [
     "house.webp",                   //6
     "sailing.webp",                 //7
     "quetzal.webp",                 //8
+    "acc_glory.webp",               //9
+    "acc_skills.webp",              //10
+    "acc_games.webp",               //11
+    "acc_digsite.webp",             //12
+    "acc_passage.webp",             //13
+    "acc_burning.webp",             //14
+    "acc_combat.webp",              //15
+    "acc_dueling.webp",             //16
+    "acc_wealth.webp",              //17
+    "acc_slayer.webp",              //18
 ]
 export const EIconHighlightColor = [
     "rgba(208, 193, 0, 255)",       //0
@@ -62,9 +72,10 @@ export const EIconHighlightColor = [
 
 import MARKERS from './mlist.json'
 import MARKERS_2 from './mlist_2.json'
+import MARKERS_3 from './mlist_3.json'
 export function createMarkerList() {
     // @ts-ignore
-    const markerListRaw = [...MARKERS, ...MARKERS_2] as IMarkerGroupRaw[]
+    const markerListRaw = [...MARKERS, ...MARKERS_2, ...MARKERS_3] as IMarkerGroupRaw[]
     const markerArray = [] as IMarker[]
     const groupArray = [] as IMarkerGroup[]
 

@@ -58,6 +58,18 @@ function toggleAll() {
               <MapMenuGroup :marker-group="MarkerGroups[6]" :inset="1"></MapMenuGroup>
               <MapMenuGroup :marker-group="MarkerGroups[7]" :inset="1"></MapMenuGroup>
             </MapMenuCategory>
+            <MapMenuCategory title="Accessories">
+              <MapMenuGroup :marker-group="MarkerGroups[8]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[9]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[10]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[11]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[12]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[13]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[14]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[15]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[16]" :inset="1"></MapMenuGroup>
+              <MapMenuGroup :marker-group="MarkerGroups[17]" :inset="1"></MapMenuGroup>
+            </MapMenuCategory>
           </div>
 
           <div class="mt-32 mb-2 w-full h-[1px] bg-primary-200"></div>

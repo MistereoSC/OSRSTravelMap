@@ -2,7 +2,7 @@ import {defineStore} from 'pinia'
 import type {IMarkerGroup, IMarker} from "~/markers/Markers";
 import {createMarkerList} from "~/markers/Markers";
 
-const DEFAULT_TOGGLE_ARRAY = [1, 2, 3, 4, 5, 6, 7, 8]
+const DEFAULT_TOGGLE_ARRAY = [1, 2, 3, 4, 5, 6, 7, 8, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
 
 export const useMapStateStore = defineStore('mapState', () => {
     const MENU_WIDTH = 312

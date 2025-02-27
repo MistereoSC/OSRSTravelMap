@@ -1,0 +1,337 @@
+[
+  {
+    "gName": "Amulet of Glory",
+    "gid": 51,
+    "gIcon": 9,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 51001,
+        "x": 2033,
+        "y": 633,
+        "st": "Edgeville"
+      },
+      {
+        "uid": 51002,
+        "x": 1866,
+        "y": 954,
+        "st": "Karamja"
+      },
+      {
+        "uid": 51003,
+        "x": 2054,
+        "y": 880,
+        "st": "Draynor Village"
+      },
+      {
+        "uid": 51004,
+        "x": 2241,
+        "y": 969,
+        "st": "Al Kharid"
+      }
+    ]
+  },
+  {
+    "gName": "Skills Necklace",
+    "gid": 52,
+    "gIcon": 10,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 52001,
+        "x": 1559,
+        "y": 743,
+        "st": "Fishing Guild"
+      },
+      {
+        "uid": 52002,
+        "x": 1966,
+        "y": 793,
+        "st": "Mining Guild",
+        "des": "Inside Mine"
+      },
+      {
+        "uid": 52003,
+        "x": 1872,
+        "y": 838,
+        "st": "Crafting Guild"
+      },
+      {
+        "uid": 52004,
+        "x": 2094,
+        "y": 695,
+        "st": "Cook's Guild"
+      },
+      {
+        "uid": 52005,
+        "x": 608,
+        "y": 627,
+        "st": "Woodcutting Guild"
+      },
+      {
+        "uid": 52006,
+        "x": 198,
+        "y": 411,
+        "st": "Farming Camp"
+      }
+    ]
+  },
+  {
+    "gName": "Skills Necklace",
+    "gid": 53,
+    "gIcon": 11,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 53001,
+        "x": 1469,
+        "y": 561,
+        "st": "Barbarian Outpost"
+      },
+      {
+        "uid": 53002,
+        "x": 1847,
+        "y": 576,
+        "st": "Burthorpe Games Room"
+      },
+      {
+        "uid": 53003,
+        "x": 2151,
+        "y": 451,
+        "st": "Corporal Beast's Lair",
+        "des": "Inside Lair"
+      },
+      {
+        "uid": 53004,
+        "x": 2117,
+        "y": 960,
+        "st": "Tears of Guthix",
+        "des": "Directly at Minigame, inside Chasm of Tears"
+      },
+      {
+        "uid": 53005,
+        "x": 580,
+        "y": 193,
+        "st": "Wintertodt Camp"
+      }
+    ]
+  },
+  {
+    "gName": "Digsite Pendant",
+    "gid": 54,
+    "gIcon": 12,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 54001,
+        "x": 2290,
+        "y": 688,
+        "st": "Digsite"
+      },
+      {
+        "uid": 54002,
+        "x": 2713,
+        "y": 263,
+        "st": "Fossil Island"
+      },
+      {
+        "uid": 54003,
+        "x": 2529,
+        "y": 148,
+        "st": "Lithkren Vault",
+        "des": "Inside Vault"
+      }
+    ]
+  },
+  {
+    "gName": "Necklace of Passage",
+    "gid": 55,
+    "gIcon": 13,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 55001,
+        "x": 2063,
+        "y": 953,
+        "st": "Wizards' Tower"
+      },
+      {
+        "uid": 55002,
+        "x": 1380,
+        "y": 784,
+        "st": "The Outpost"
+      },
+      {
+        "uid": 55003,
+        "x": 2353,
+        "y": 974,
+        "st": "Eagle's Eyrie"
+      }
+    ]
+  },
+  {
+    "gName": "Burning Amulet",
+    "gid": 56,
+    "gIcon": 14,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 56001,
+        "x": 2182,
+        "y": 497,
+        "st": "Chaos Temple"
+      },
+      {
+        "uid": 56002,
+        "x": 1987,
+        "y": 479,
+        "st": "Bandit Camp"
+      },
+      {
+        "uid": 56003,
+        "x": 1975,
+        "y": 289,
+        "st": "Lava Maze"
+      }
+    ]
+  },
+  {
+    "gName": "Combat Bracelet",
+    "gid": 57,
+    "gIcon": 15,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 57001,
+        "x": 1829,
+        "y": 586,
+        "st": "Warriors' Guild"
+      },
+      {
+        "uid": 57002,
+        "x": 2140,
+        "y": 765,
+        "st": "Champions' Guild"
+      },
+      {
+        "uid": 57003,
+        "x": 2001,
+        "y": 641,
+        "st": "Edgeville Monastery"
+      },
+      {
+        "uid": 57004,
+        "x": 1601,
+        "y": 693,
+        "st": "Ranging Guild"
+      }
+    ]
+  },
+  {
+    "gName": "Ring of Dueling",
+    "gid": 58,
+    "gIcon": 16,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 58001,
+        "x": 2262,
+        "y": 897,
+        "st": "Emir's Arena"
+      },
+      {
+        "uid": 58002,
+        "x": 1389,
+        "y": 1043,
+        "st": "Castle Wars"
+      },
+      {
+        "uid": 58003,
+        "x": 2102,
+        "y": 497,
+        "st": "Ferox Enclave"
+      },
+      {
+        "uid": 58004,
+        "x": 741,
+        "y": 1025,
+        "st": "Fortis Colosseum"
+      }
+    ]
+  },
+  {
+    "gName": "Ring of Wealth",
+    "gid": 59,
+    "gIcon": 17,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 59001,
+        "x": 1484,
+        "y": 272,
+        "st": "Miscellania"
+      },
+      {
+        "uid": 59002,
+        "x": 2110,
+        "y": 653,
+        "st": "Grand Exchange"
+      },
+      {
+        "uid": 59003,
+        "x": 1947,
+        "y": 760,
+        "st": "Falador Park"
+      },
+      {
+        "uid": 59004,
+        "x": 1679,
+        "y": 419,
+        "st": "Dondakan",
+        "des": "Inside Keldagrim south-west Mine"
+      }
+    ]
+  },
+  {
+    "gName": "Slayer Ring",
+    "gid": 60,
+    "gIcon": 18,
+    "hCol": 5,
+    "ms": [
+      {
+        "uid": 60001,
+        "x": 1378,
+        "y": 711,
+        "st": "Stronghold Slayer Cave"
+      },
+      {
+        "uid": 60002,
+        "x": 2370,
+        "y": 598,
+        "st": "Slayer Tower"
+      },
+      {
+        "uid": 60003,
+        "x": 1745,
+        "y": 516,
+        "st": "Fremennik Slayer Dungeon",
+        "des": "Inside Dungeon"
+      },
+      {
+        "uid": 60004,
+        "x": 2388,
+        "y": 900,
+        "st": "Tarn's Lair",
+        "des": "Inside Lair"
+      },
+      {
+        "uid": 60005,
+        "x": 1490,
+        "y": 806,
+        "st": "Dark Beasts",
+        "des": "Inside Dungeon"
+      }
+    ]
+  }
+]
+

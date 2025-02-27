@@ -86,6 +86,12 @@ function getHighlightColorString() {
 
 .MapImage {
   z-index: 1;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  object-fit: contain;
 }
 
 .MapHighlight {
