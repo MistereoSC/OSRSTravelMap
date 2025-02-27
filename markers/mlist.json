@@ -3,7 +3,7 @@
     "gName": "Spirit Trees",
     "gid": 1,
     "gIcon": 1,
-    "hCol": 0,
+    "hCol":0,
     "ms": [
       {
         "uid": 1001,
@@ -88,6 +88,7 @@
     "gName": "Fairy Rings",
     "gid": 2,
     "gIcon": 0,
+    "hCol": 4,
     "ms": [
       {
         "uid": 2001,

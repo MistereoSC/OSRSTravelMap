@@ -3,6 +3,7 @@ export interface IMarkerGroupRaw {
     gIcon: number,
     ms: IMarkerRaw[]
     gName: string,
+    hCol?: number, // Group Highlight Color
 }
 
 export interface IMarkerRaw {
@@ -13,7 +14,6 @@ export interface IMarkerRaw {
     lms?: number[], // Linked Markers UID
     st: string, // Subtitle
     des?: string, // Description
-    hCol?: number, // Highlight Color
 }
 
 export interface IMarker {
@@ -22,6 +22,7 @@ export interface IMarker {
     subtitle: string,
     description?: string,
     icon_path: string,
+    highlight_color?: string,
 
     marker_id: number,
     group_id: number,
@@ -37,17 +38,25 @@ export interface IMarkerGroup {
 }
 
 export const EIconId = [
-    "fairyStaff.webp",
-    "spiritTree.webp",
-    "teleport_standard.webp",
-    "teleport_arceuus.webp",
-    "teleport_ancient.webp",
-    "teleport_lunar.webp",
-    "house.webp",
-    "sailing.webp"
+    "fairyStaff.webp",              //0
+    "spiritTree.webp",              //1
+    "teleport_standard.webp",       //2
+    "teleport_arceuus.webp",        //3
+    "teleport_ancient.webp",        //4
+    "teleport_lunar.webp",          //5
+    "house.webp",                   //6
+    "sailing.webp"                  //7
 ]
 export const EIconHighlightColor = [
-
+    "rgba(208, 193, 0, 255)",       //0
+    "rgba(239,118,39,255)",         //1
+    "rgba(74, 129, 35, 255)",       //2
+    "rgba(0, 56, 168, 255)",        //3
+    "rgba(33,177,255,255)",         //4
+    "rgba(214,2,112,255)",          //5
+    "rgba(163,2,98,255)",           //6
+    "rgba(148, 2, 2, 255)",         //7
+    "rgba(97, 57, 21, 255)"         //8
 ]
 
 import MARKERS from './mlist.json'
@@ -72,6 +81,7 @@ export function createMarkerList() {
                 subtitle: marker.st,
                 description: marker.des,
                 icon_path: EIconId[group.gIcon],
+                highlight_color: group.hCol != undefined ? EIconHighlightColor[group.hCol] : undefined,
                 marker_id: marker.uid,
                 group_id: group.gid,
                 linked_markers: marker.lms

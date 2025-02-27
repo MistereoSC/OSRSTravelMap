@@ -44,6 +44,11 @@ function updateTooltipPosition(event: MouseEvent) {
     left: `${event.clientX + 18}px`,
   };
 }
+
+function getHighlightColorString() {
+  if(!props.marker.highlight_color) return 'none'
+  return `drop-shadow(0 0 1px ${props.marker.highlight_color}) drop-shadow(0 0 1px ${props.marker.highlight_color}) drop-shadow(0 0 1px ${props.marker.highlight_color}) drop-shadow(0 0 1px ${props.marker.highlight_color})`
+}
 </script>
 
 <template>
@@ -51,9 +56,11 @@ function updateTooltipPosition(event: MouseEvent) {
        :class="{ 'hidden': !isVisible }"
        @contextmenu.prevent>
     <div class="MapImage relative w-full h-full bg-cover "
-         :style="{backgroundImage: `url('/icons/${props.marker.icon_path}')`}"
+         :style="{backgroundImage: `url('/icons/${props.marker.icon_path}')`, filter: getHighlightColorString()}"
          @mouseover="showTooltip" @mouseleave="hideTooltip" @mousemove="updateTooltipPosition"
-         @click="onMarkerClick">
+         @click="onMarkerClick"
+
+    >
     </div>
     <div class="MapHighlight absolute top-0 w-full h-full " :data-highlighted="isHighlighted"></div>
 
@@ -78,7 +85,7 @@ function updateTooltipPosition(event: MouseEvent) {
 }
 
 .MapImage {
-  filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
+  //filter: drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink)) drop-shadow(0 0 1px var(--a-pink));
   z-index: 1;
 }
 
